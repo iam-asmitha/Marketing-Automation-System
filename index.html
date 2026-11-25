@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Market Auto - Marketing Automation CRM dashboard">
+  <title>Market Auto | Marketing Automation CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="Market Auto home">
+        <span class="brand-mark"><i class="fa-solid fa-bullhorn"></i></span>
+        <span>market<span class="brand-accent">auto</span><small>MARKETING WORKSPACE</small></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-link active" href="#dashboard" data-page="dashboard"><i class="fa-solid fa-grid-2"></i><span>Dashboard</span></a>
+        <a class="nav-link" href="#campaigns" data-page="campaigns"><i class="fa-solid fa-paper-plane"></i><span>Campaigns</span><span class="nav-count" id="campaignNavCount">0</span></a>
+        <a class="nav-link" href="#templates" data-page="templates"><i class="fa-regular fa-envelope"></i><span>Email templates</span></a>
+        <a class="nav-link" href="#subscribers" data-page="subscribers"><i class="fa-solid fa-users"></i><span>Subscribers</span></a>
+        <a class="nav-link" href="#analytics" data-page="analytics"><i class="fa-solid fa-chart-line"></i><span>Analytics</span></a>
+        <a class="nav-link" href="#workflows" data-page="workflows"><i class="fa-solid fa-diagram-project"></i><span>Workflows</span></a>
+        <a class="nav-link" href="#landing" data-page="landing"><i class="fa-regular fa-window-maximize"></i><span>Landing pages</span></a>
+        <a class="nav-link" href="#reports" data-page="reports"><i class="fa-regular fa-file-lines"></i><span>Reports</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon"><i class="fa-regular fa-lightbulb"></i></div>
+          <strong>Make every campaign count.</strong>
+          <p>Keep your audience engaged with smarter marketing.</p>
+          <a href="#analytics" data-page="analytics">View insights <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <a class="nav-link" href="#settings" data-page="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+        <button class="profile-mini" id="profileButton" type="button">
+          <span class="avatar">AR</span><span class="profile-copy"><b id="sidebarUserName">Asmitha R</b><small>Workspace admin</small></span><i class="fa-solid fa-ellipsis"></i>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-menu" id="menuToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+          <div class="breadcrumb"><span>Workspace</span><i class="fa-solid fa-chevron-right"></i><strong id="breadcrumbPage">Dashboard</strong></div>
+        </div>
+        <div class="topbar-actions">
+          <label class="global-search"><i class="fa-solid fa-magnifying-glass"></i><input id="globalSearch" type="search" placeholder="Search anything..."><kbd>⌘ K</kbd></label>
+          <button class="icon-button" id="themeToggle" aria-label="Toggle dark mode"><i class="fa-regular fa-moon"></i></button>
+          <button class="icon-button notification-button" id="notificationButton" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span></span></button>
+          <div class="top-avatar" id="topAvatar">AR</div>
+        </div>
+      </header>
+
+      <div class="page-container">
+        <section class="page active" id="page-dashboard">
+          <div class="page-heading">
+            <div><p class="eyebrow" id="todayLabel">YOUR MARKETING OVERVIEW</p><h1>Good morning, <span id="welcomeName">Asmitha</span> <span class="wave">✦</span></h1><p class="subheading">Here's what's happening with your campaigns today.</p></div>
+            <button class="btn btn-primary" data-open-modal="campaign"><i class="fa-solid fa-plus"></i> Create campaign</button>
+          </div>
+          <div class="stat-grid">
+            <article class="stat-card"><div class="stat-top"><span>Total campaigns</span><span class="stat-icon red"><i class="fa-solid fa-paper-plane"></i></span></div><div class="stat-value" id="statCampaigns">0</div><div class="stat-foot"><span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 12.8%</span><span>vs. last month</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Total subscribers</span><span class="stat-icon purple"><i class="fa-solid fa-users"></i></span></div><div class="stat-value" id="statSubscribers">0</div><div class="stat-foot"><span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 8.4%</span><span>vs. last month</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Average open rate</span><span class="stat-icon orange"><i class="fa-regular fa-envelope-open"></i></span></div><div class="stat-value" id="statOpenRate">0%</div><div class="stat-foot"><span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 4.2%</span><span>vs. last month</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Total clicks</span><span class="stat-icon green"><i class="fa-solid fa-arrow-pointer"></i></span></div><div class="stat-value" id="statClicks">0</div><div class="stat-foot"><span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 6.1%</span><span>vs. last month</span></div></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel performance-panel">
+              <div class="panel-heading"><div><h2>Campaign performance</h2><p>Engagement overview across your campaigns</p></div><select id="performanceRange" class="select-control"><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="90">Last 90 days</option></select></div>
+              <div class="chart-legend"><span><i class="legend-dot red-dot"></i> Opens</span><span><i class="legend-dot pink-dot"></i> Clicks</span></div>
+              <canvas id="performanceChart" height="245" aria-label="Campaign performance chart"></canvas>
+            </article>
+            <article class="panel channel-panel">
+              <div class="panel-heading"><div><h2>Audience overview</h2><p>Subscriber status breakdown</p></div><button class="more-button" aria-label="More options"><i class="fa-solid fa-ellipsis"></i></button></div>
+              <div class="donut-wrap"><div class="donut" id="audienceDonut"><div class="donut-center"><strong id="audienceTotal">0</strong><span>Subscribers</span></div></div></div>
+              <div class="audience-legend"><div><span><i class="legend-dot red-dot"></i> Active</span><b id="activeSubscribers">0</b></div><div><span><i class="legend-dot gray-dot"></i> Unsubscribed</span><b id="inactiveSubscribers">0</b></div></div>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Recent campaigns</h2><p>Keep an eye on your latest activity</p></div><a class="text-link" href="#campaigns" data-page="campaigns">View all campaigns <i class="fa-solid fa-arrow-right"></i></a></div>
+            <div class="table-wrap"><table><thead><tr><th>CAMPAIGN NAME</th><th>TYPE</th><th>STATUS</th><th>OPEN RATE</th><th>CLICK RATE</th><th>DATE</th></tr></thead><tbody id="recentCampaignRows"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="page" id="page-campaigns">
+          <div class="page-heading"><div><p class="eyebrow">CAMPAIGN CENTER</p><h1>Campaigns</h1><p class="subheading">Create, organize and track your marketing campaigns.</p></div><button class="btn btn-primary" data-open-modal="campaign"><i class="fa-solid fa-plus"></i> New campaign</button></div>
+          <div class="toolbar"><label class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input id="campaignSearch" placeholder="Search campaigns..."></label><select id="campaignStatusFilter" class="select-control"><option value="all">All statuses</option><option value="draft">Draft</option><option value="scheduled">Scheduled</option><option value="in-progress">In progress</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select><select id="campaignTypeFilter" class="select-control"><option value="all">All types</option><option>Email Campaign</option><option>Product Update</option><option>Newsletter</option><option>Promotional</option></select></div>
+          <article class="panel"><div class="table-wrap"><table><thead><tr><th>CAMPAIGN NAME</th><th>TYPE</th><th>AUDIENCE</th><th>STATUS</th><th>OPEN RATE</th><th>CLICK RATE</th><th>CREATED</th><th></th></tr></thead><tbody id="campaignRows"></tbody></table></div><div class="empty-state hidden" id="campaignEmpty"><i class="fa-regular fa-folder-open"></i><h3>No campaigns found</h3><p>Try changing your filters or create a new campaign.</p></div></article>
+        </section>
+
+        <section class="page" id="page-templates">
+          <div class="page-heading"><div><p class="eyebrow">CONTENT STUDIO</p><h1>Email templates</h1><p class="subheading">Build reusable emails that look great in every inbox.</p></div><button class="btn btn-primary" data-open-modal="template"><i class="fa-solid fa-plus"></i> Create template</button></div>
+          <div class="template-grid" id="templateGrid"></div>
+        </section>
+
+        <section class="page" id="page-subscribers">
+          <div class="page-heading"><div><p class="eyebrow">YOUR AUDIENCE</p><h1>Subscribers</h1><p class="subheading">Manage contacts, segments and subscriber preferences.</p></div><div class="button-row"><button class="btn btn-secondary" id="exportSubscribers"><i class="fa-solid fa-download"></i> Export CSV</button><button class="btn btn-primary" data-open-modal="subscriber"><i class="fa-solid fa-plus"></i> Add subscriber</button></div></div>
+          <div class="stat-grid compact-stats"><article class="stat-card"><div class="stat-top"><span>All contacts</span><span class="stat-icon red"><i class="fa-solid fa-address-book"></i></span></div><div class="stat-value" id="allContactsCount">0</div></article><article class="stat-card"><div class="stat-top"><span>Active</span><span class="stat-icon green"><i class="fa-solid fa-user-check"></i></span></div><div class="stat-value" id="activeContactsCount">0</div></article><article class="stat-card"><div class="stat-top"><span>Unsubscribed</span><span class="stat-icon orange"><i class="fa-solid fa-user-minus"></i></span></div><div class="stat-value" id="unsubContactsCount">0</div></article><article class="stat-card"><div class="stat-top"><span>Segments</span><span class="stat-icon purple"><i class="fa-solid fa-layer-group"></i></span></div><div class="stat-value">3</div></article></div>
+          <div class="toolbar"><label class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input id="subscriberSearch" placeholder="Search name or email..."></label><select class="select-control" id="subscriberSegment"><option value="all">All segments</option><option value="active">Active subscribers</option><option value="unsubscribed">Unsubscribed</option><option value="new">New this month</option></select></div>
+          <article class="panel"><div class="table-wrap"><table><thead><tr><th>CONTACT</th><th>EMAIL</th><th>SEGMENT</th><th>STATUS</th><th>SUBSCRIBED DATE</th><th></th></tr></thead><tbody id="subscriberRows"></tbody></table></div></article>
+        </section>
+
+        <section class="page" id="page-analytics">
+          <div class="page-heading"><div><p class="eyebrow">MEASURE WHAT MATTERS</p><h1>Campaign analytics</h1><p class="subheading">Understand how your audience interacts with your messages.</p></div><button class="btn btn-secondary" id="downloadAnalytics"><i class="fa-solid fa-download"></i> Export analytics</button></div>
+          <div class="stat-grid"><article class="stat-card"><div class="stat-top"><span>Average open rate</span><span class="stat-icon red"><i class="fa-regular fa-envelope-open"></i></span></div><div class="stat-value" id="analyticsOpen">0%</div><div class="stat-foot"><span class="muted">Across all campaigns</span></div></article><article class="stat-card"><div class="stat-top"><span>Average click rate</span><span class="stat-icon purple"><i class="fa-solid fa-arrow-pointer"></i></span></div><div class="stat-value" id="analyticsClick">0%</div><div class="stat-foot"><span class="muted">Across all campaigns</span></div></article><article class="stat-card"><div class="stat-top"><span>Bounce rate</span><span class="stat-icon orange"><i class="fa-solid fa-triangle-exclamation"></i></span></div><div class="stat-value" id="analyticsBounce">1.8%</div><div class="stat-foot"><span class="muted">Sample demonstration metric</span></div></article><article class="stat-card"><div class="stat-top"><span>Conversions</span><span class="stat-icon green"><i class="fa-solid fa-bullseye"></i></span></div><div class="stat-value" id="analyticsConversions">0</div><div class="stat-foot"><span class="muted">Sample campaign data</span></div></article></div>
+          <div class="dashboard-grid"><article class="panel"><div class="panel-heading"><div><h2>Engagement comparison</h2><p>Open rate vs click rate</p></div></div><canvas id="analyticsChart" height="270"></canvas></article><article class="panel"><div class="panel-heading"><div><h2>Performance notes</h2><p>Quick insights from your workspace</p></div></div><div class="insight-list"><div class="insight-item"><span class="insight-icon"><i class="fa-solid fa-star"></i></span><div><b>Top-performing campaign</b><p id="topCampaignInsight">Your best campaign will appear here.</p></div></div><div class="insight-item"><span class="insight-icon purple-bg"><i class="fa-solid fa-users"></i></span><div><b>Audience health</b><p id="audienceInsight">Review your active subscriber segment regularly.</p></div></div><div class="insight-item"><span class="insight-icon green-bg"><i class="fa-solid fa-chart-simple"></i></span><div><b>Next step</b><p>Test different subject lines to improve engagement.</p></div></div></div></article></div>
+          <article class="panel"><div class="panel-heading"><div><h2>Campaign metrics</h2><p>Detailed performance by campaign</p></div></div><div class="table-wrap"><table><thead><tr><th>CAMPAIGN</th><th>STATUS</th><th>OPEN RATE</th><th>CLICK RATE</th><th>CONVERSIONS</th></tr></thead><tbody id="analyticsRows"></tbody></table></div></article>
+        </section>
+
+        <section class="page" id="page-workflows">
+          <div class="page-heading"><div><p class="eyebrow">AUTOMATE THE JOURNEY</p><h1>Automation workflows</h1><p class="subheading">Create automated sequences for meaningful customer moments.</p></div><button class="btn btn-primary" data-open-modal="workflow"><i class="fa-solid fa-plus"></i> New workflow</button></div>
+          <div class="workflow-grid" id="workflowGrid"></div>
+        </section>
+
+        <section class="page" id="page-landing">
+          <div class="page-heading"><div><p class="eyebrow">CONVERSION PAGES</p><h1>Landing pages</h1><p class="subheading">Create focused pages for your next campaign.</p></div><button class="btn btn-primary" data-open-modal="landing"><i class="fa-solid fa-plus"></i> Create landing page</button></div>
+          <div class="landing-grid" id="landingGrid"></div>
+        </section>
+
+        <section class="page" id="page-reports">
+          <div class="page-heading"><div><p class="eyebrow">REPORTING CENTER</p><h1>Reports</h1><p class="subheading">Export campaign performance and share useful insights.</p></div><div class="button-row"><button class="btn btn-secondary" id="reportCsv"><i class="fa-solid fa-file-csv"></i> Export CSV</button><button class="btn btn-primary" id="reportPrint"><i class="fa-regular fa-file-pdf"></i> Save as PDF</button></div></div>
+          <div class="report-banner"><div><span class="eyebrow">WORKSPACE SUMMARY</span><h2>Your marketing at a glance.</h2><p>Generate a report from your current campaign and audience data.</p></div><div class="report-banner-icon"><i class="fa-solid fa-chart-pie"></i></div></div>
+          <div class="stat-grid"><article class="stat-card"><div class="stat-top"><span>Campaigns created</span><span class="stat-icon red"><i class="fa-solid fa-paper-plane"></i></span></div><div class="stat-value" id="reportCampaigns">0</div></article><article class="stat-card"><div class="stat-top"><span>Audience size</span><span class="stat-icon purple"><i class="fa-solid fa-users"></i></span></div><div class="stat-value" id="reportAudience">0</div></article><article class="stat-card"><div class="stat-top"><span>Avg. open rate</span><span class="stat-icon orange"><i class="fa-regular fa-envelope-open"></i></span></div><div class="stat-value" id="reportOpen">0%</div></article><article class="stat-card"><div class="stat-top"><span>Est. ROI</span><span class="stat-icon green"><i class="fa-solid fa-indian-rupee-sign"></i></span></div><div class="stat-value">3.8x</div></article></div>
+          <article class="panel"><div class="panel-heading"><div><h2>Report details</h2><p>Current workspace records</p></div></div><div id="reportDetails" class="report-details"></div></article>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-heading"><div><p class="eyebrow">PREFERENCES</p><h1>Settings</h1><p class="subheading">Manage your profile and workspace preferences.</p></div></div>
+          <article class="panel settings-panel"><h2>Profile information</h2><p class="panel-description">Update the name shown in your workspace.</p><form id="profileForm" class="form-grid"><label>Full name<input name="name" id="settingsName" required maxlength="50"></label><label>Email address<input name="email" id="settingsEmail" type="email" required></label><div class="form-actions"><button class="btn btn-primary" type="submit">Save changes</button></div></form></article>
+          <article class="panel settings-panel"><h2>Appearance</h2><p class="panel-description">Choose how Market Auto looks on this device.</p><div class="setting-row"><div><b>Dark mode</b><p>Switch between light and dark workspace themes.</p></div><button class="btn btn-secondary" id="settingsTheme">Toggle theme</button></div></article>
+          <article class="panel settings-panel"><h2>Data management</h2><p class="panel-description">Your demo data is saved in this browser using local storage.</p><button class="btn btn-danger-outline" id="resetData"><i class="fa-solid fa-rotate-left"></i> Restore demo data</button></article>
+        </section>
+      </div>
+      <footer class="app-footer"><span>© 2026 Market Auto. Built for smarter marketing.</span><span>WD-CRM-005 <i class="fa-solid fa-circle"></i> Data Alcott Systems</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header"><div><p class="eyebrow">WORKSPACE BUILDER</p><h2 id="modalTitle">Create item</h2></div><button class="icon-button" id="modalClose" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></button></div>
+      <form id="modalForm"><div id="modalFields" class="modal-fields"></div><div class="modal-actions"><button type="button" class="btn btn-secondary" id="modalCancel">Cancel</button><button type="submit" class="btn btn-primary" id="modalSubmit">Save item</button></div></form>
+    </section>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
